@@ -7,7 +7,9 @@
 #### Title: 
     CLI Company Management CMS
 #### Description:
-    This application give contol to companies that want a better way to keep track of their employees, departments, and roles in each department. Easy to use. Even easier to read. This app lets companies get back to their business instead of wasting time managing employee records.
+    This application give contol to companies that want a better way to keep track of their employees, 
+    departments, and roles in each department. Easy to use. Even easier to read. This app lets 
+    companies get back to their business instead of wasting time managing employee records.
 
 #### Table of Contents:
         -Installation
