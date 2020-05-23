@@ -143,7 +143,12 @@ function viewEmployeesByDepartment() {
     inquirer.prompt({
         name: "department",
         type: "input",
-        message: "What is the id number of the department you are looking for?"
+        message: "What is the id number of the department you are looking for?",
+        validate: (name) => {
+            let regexp = /[0-9]/gi;
+            let result = name.match(regexp) ? true : "   Please input proper value";
+            return result
+        }
     }).then(function(answers) {
         connection.query("SELECT employee.id, employee.first_name, employee.last_name, role.title FROM employee LEFT JOIN role ON employee.role_id = role.id LEFT JOIN department ON role.department_id = department.id WHERE department.?", { id: answers.department }, function(err, res) {
             if (err) throw err;
@@ -157,7 +162,12 @@ function viewRolesByDepartment() {
     inquirer.prompt({
         name: "department",
         type: "input",
-        message: "What is the id number of the department you are looking for?"
+        message: "What is the id number of the department you are looking for?",
+        validate: (name) => {
+            let regexp = /[0-9]/gi;
+            let result = name.match(regexp) ? true : "   Please input proper value";
+            return result
+        }
     }).then(function(answers) {
         connection.query("SELECT department.name, role.title, role.salary FROM role LEFT JOIN department ON role.department_id = department.id WHERE department.?", { id: answers.department }, function(err, res) {
             if (err) throw err;
@@ -181,19 +191,39 @@ function addEmployee() {
     inquirer.prompt([{
             name: "first_name",
             type: "input",
-            message: "What is the employee's first name?"
+            message: "What is the employee's first name?",
+            validate: (name) => {
+                let regexp = /[A-Z]/gi;
+                let result = name.match(regexp) ? true : "   Please input proper value";
+                return result
+            }
         }, {
             name: "last_name",
             type: "input",
-            message: "What is the employee's last name?"
+            message: "What is the employee's last name?",
+            validate: (name) => {
+                let regexp = /[A-Z]/gi;
+                let result = name.match(regexp) ? true : "   Please input proper value";
+                return result
+            }
         }, {
             name: "role_id",
             type: "input",
-            message: "What is the employee's role id?"
+            message: "What is the employee's role id?",
+            validate: (name) => {
+                let regexp = /[0-9]/gi;
+                let result = name.match(regexp) ? true : "   Please input proper value";
+                return result
+            }
         }, {
             name: "manager_id",
             type: "input",
-            message: "What is the employee's manager id?"
+            message: "What is the employee's manager id?",
+            validate: (name) => {
+                let regexp = /[0-9]/gi;
+                let result = name.match(regexp) ? true : "   Please input proper value";
+                return result
+            }
         }])
         .then(function(answers) {
             connection.query("INSERT INTO employee SET ?", [{
@@ -218,24 +248,49 @@ function updateEmployee() {
         inquirer.prompt([{
                 name: "id",
                 type: "input",
-                message: "What is the id number of the employee being changed?"
+                message: "What is the id number of the employee being changed?",
+                validate: (name) => {
+                    let regexp = /[0-9]/gi;
+                    let result = name.match(regexp) ? true : "   Please input proper value";
+                    return result
+                }
             },
             {
                 name: "first_name",
                 type: "input",
-                message: "What is the employee's first name?"
+                message: "What is the employee's first name?",
+                validate: (name) => {
+                    let regexp = /[A-Z]/gi;
+                    let result = name.match(regexp) ? true : "   Please input proper value";
+                    return result
+                }
             }, {
                 name: "last_name",
                 type: "input",
-                message: "What is the employee's last name?"
+                message: "What is the employee's last name?",
+                validate: (name) => {
+                    let regexp = /[A-Z]/gi;
+                    let result = name.match(regexp) ? true : "   Please input proper value";
+                    return result
+                }
             }, {
                 name: "role_id",
                 type: "input",
-                message: "What is the employee's role id?"
+                message: "What is the employee's role id?",
+                validate: (name) => {
+                    let regexp = /[0-9]/gi;
+                    let result = name.match(regexp) ? true : "   Please input proper value";
+                    return result
+                }
             }, {
                 name: "manager_id",
                 type: "input",
-                message: "What is the employee's manager id?"
+                message: "What is the employee's manager id?",
+                validate: (name) => {
+                    let regexp = /[0-9]/gi;
+                    let result = name.match(regexp) ? true : "   Please input proper value";
+                    return result
+                }
             }
         ]).then(function(answers) {
             connection.query("UPDATE employee SET ? WHERE ?", [{
@@ -263,7 +318,12 @@ function removeEmployee() {
         inquirer.prompt({
             name: "id",
             type: "input",
-            message: "What is the id number of the employee being removed?"
+            message: "What is the id number of the employee being removed?",
+            validate: (name) => {
+                let regexp = /[0-9]/gi;
+                let result = name.match(regexp) ? true : "   Please input proper value";
+                return result
+            }
         }).then(function(answer) {
             connection.query("DELETE FROM employee WHERE ?", { id: answer.id }, function(err) {
                 if (err) throw err;
@@ -287,15 +347,30 @@ function addRole() {
     inquirer.prompt([{
             name: "title",
             type: "input",
-            message: "What is the role's title?"
+            message: "What is the role's title?",
+            validate: (name) => {
+                let regexp = /[A-Z]/gi;
+                let result = name.match(regexp) ? true : "   Please input proper value";
+                return result
+            }
         }, {
             name: "salary",
             type: "input",
-            message: "What is the role's salary?"
+            message: "What is the role's salary?",
+            validate: (name) => {
+                let regexp = /[0-9]/gi;
+                let result = name.match(regexp) ? true : "   Please input proper value";
+                return result
+            }
         }, {
             name: "department_id",
             type: "input",
-            message: "What is the role's department id?"
+            message: "What is the role's department id?",
+            validate: (name) => {
+                let regexp = /[0-9]/gi;
+                let result = name.match(regexp) ? true : "   Please input proper value";
+                return result
+            }
         }])
         .then(function(answers) {
             connection.query("INSERT INTO role SET ?", [{
@@ -319,20 +394,40 @@ function updateRole() {
         inquirer.prompt([{
                 name: "id",
                 type: "input",
-                message: "What is the id number of the role to be changed?"
+                message: "What is the id number of the role to be changed?",
+                validate: (name) => {
+                    let regexp = /[0-9]/gi;
+                    let result = name.match(regexp) ? true : "   Please input proper value";
+                    return result
+                }
             },
             {
                 name: "title",
                 type: "input",
-                message: "What is the role's title?"
+                message: "What is the role's title?",
+                validate: (name) => {
+                    let regexp = /[A-Z]/gi;
+                    let result = name.match(regexp) ? true : "   Please input proper value";
+                    return result
+                }
             }, {
                 name: "salary",
                 type: "input",
-                message: "What is the role's salary?"
+                message: "What is the role's salary?",
+                validate: (name) => {
+                    let regexp = /[0-9]/gi;
+                    let result = name.match(regexp) ? true : "   Please input proper value";
+                    return result
+                }
             }, {
                 name: "department_id",
                 type: "input",
-                message: "What is the role's department id?"
+                message: "What is the role's department id?",
+                validate: (name) => {
+                    let regexp = /[0-9]/gi;
+                    let result = name.match(regexp) ? true : "   Please input proper value";
+                    return result
+                }
             }
         ]).then(function(answers) {
             connection.query("UPDATE role SET ? WHERE ?", [{
@@ -363,7 +458,12 @@ function removeRole() {
         inquirer.prompt({
             name: "id",
             type: "input",
-            message: "What is the id number of the role being removed?"
+            message: "What is the id number of the role being removed?",
+            validate: (name) => {
+                let regexp = /[0-9]/gi;
+                let result = name.match(regexp) ? true : "   Please input proper value";
+                return result
+            }
         }).then(function(answer) {
             connection.query("DELETE FROM role WHERE ?", { id: answer.id }, function(err) {
                 if (err) throw err;
@@ -387,7 +487,12 @@ function addDepartment() {
     inquirer.prompt({
         name: "department",
         type: "input",
-        message: "What is the department's name?"
+        message: "What is the department's name?",
+        validate: (name) => {
+            let regexp = /[A-Z]/gi;
+            let result = name.match(regexp) ? true : "   Please input proper value";
+            return result
+        }
     }).then(function(answers) {
         connection.query("INSERT INTO department SET ?", { name: answers.department }, function(err) {
             if (err) throw err;
@@ -405,11 +510,21 @@ function updateDepartment() {
         inquirer.prompt([{
             name: "id",
             type: "input",
-            message: "What is the id number of the department to be changed?"
+            message: "What is the id number of the department to be changed?",
+            validate: (name) => {
+                let regexp = /[0-9]/gi;
+                let result = name.match(regexp) ? true : "   Please input proper value";
+                return result
+            }
         }, {
             name: "name",
             type: "input",
-            message: "What is the department's name?"
+            message: "What is the department's name?",
+            validate: (name) => {
+                let regexp = /[A-Z]/gi;
+                let result = name.match(regexp) ? true : "   Please input proper value";
+                return result
+            }
         }]).then(function(answers) {
             connection.query("UPDATE department SET ? WHERE ?", [{ name: answers.name }, { id: answers.id }],
                 function(err) {
@@ -434,7 +549,12 @@ function removeDepartment() {
         inquirer.prompt({
             name: "id",
             type: "input",
-            message: "What is the id number of the department being removed?"
+            message: "What is the id number of the department being removed?",
+            validate: (name) => {
+                let regexp = /[0-9]/gi;
+                let result = name.match(regexp) ? true : "   Please input proper value";
+                return result
+            }
         }).then(function(answer) {
             connection.query("DELETE FROM department WHERE ?", { id: answer.id }, function(err) {
                 if (err) throw err;
