@@ -51,7 +51,6 @@ async function viewNav() {
             "Roles",
             "Roles by Department",
             "Departments",
-            "Department Finances",
             "Back"
         ]
     })
@@ -65,8 +64,6 @@ async function viewNav() {
         viewRolesByDepartment()
     } else if (answers.view === "Departments") {
         viewDepartment()
-    } else if (answers.view === "Department Finances") {
-        viewFinances()
     } else {
         start()
     }
