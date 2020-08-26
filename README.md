@@ -3,9 +3,13 @@
 ![user picture](https://avatars1.githubusercontent.com/u/57682169?v=4)
 
 #### User Email: 
-    andrew.reeves.coding.bootcamp@gmail.com
+    andrew.c.reeves27@gmail.com
 #### Title: 
     CLI Company Management CMS
+    
+![Gif of usage](https://media.giphy.com/media/J1LOMomVvnKBoQlckh/giphy.gif)
+
+
 #### Description:
     This application give contol to companies that want a better way to keep track of their employees, 
     departments, and roles in each department. Easy to use. Even easier to read. This app lets 
@@ -29,4 +33,4 @@
 #### Tests:
     N/A
 #### Questions:
-    If any questions persist, please direct them to my email: andrew.reeves.coding.bootcamp@gmail.com
+    If any questions persist, please direct them to my email: andrew.c.reeves27@gmail.com
